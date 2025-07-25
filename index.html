@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Award Letters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --purple-1: #e3ccfb;
+            --purple-2: #c699f7;
+            --purple-3: #aa66f3;
+            --dark-purple: #7a00db;
+            --blue-purple: #7100eb;
+            --green: #eafdec;
+        }
+
+        body {
+            background-color: var(--purple-1);
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            background-color: var(--blue-purple);
+            padding: 20px;
+        }
+
+        h2 {
+            margin: 0px;
+        }
+
+        p {
+            margin: 0px;
+        }
+
+        /* HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 30px;
+            color: var(--dark-purple)
+        }
+
+            .right-header ul {
+                list-style: none;
+                text-align: right;
+            }
+
+            header img {
+                height: 50px;
+            }
+        
+        /* MAIN */
+        main {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            column-gap: 30px;
+            padding: 0px 30px;
+        }
+
+        .definition {
+            color: var(--dark-purple);
+        }
+
+        /* ACCORDION */
+        .accordion-section {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+        }
+
+        .accordion-header {
+            background-color: var(--blue-purple);
+            padding: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+
+        .accordion-header::before {
+            content: "\f107";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 20px;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active::before {
+            content: "\f106";
+            transform: rotate(0deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            background-color: var(--purple-2);
+            padding: 0 20px;
+            color: white;
+        }
+
+        .accordion-content.active {
+            max-height: 500px;
+            padding: 20px;
+        }
+
+        /* TABLES */
+        table {
+            width: 100%;
+            text-align: left;
+        }
+
+        table h3 {
+            margin: 0;
+        }
+
+        table i {
+            color: var(--dark-purple)
+        }
+
+        /* Next Steps */
+        .next-steps h2 {
+            margin-top: 20px;
+            text-align: center;
+            background-color: var(--green);
+            padding: 10px;
+            color: var(--blue-purple);
+        }
+
+            .next-steps .buttons {
+                background-color: var(--purple-3);
+                padding: 20px 30px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .buttons button {
+                border: none;
+                color: white;
+                background-color: var(--dark-purple);
+                border-radius: 5px;
+                padding: 30px 50px;
+                font-weight: bold;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+            .buttons button:hover {
+                background-color: var(--purple-1);
+                color: var(--blue-purple);
+                transition: 0.3s ease-in-out;
+            }
+
+        /* RIGHT COLUMN */
+        .right-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .block {
+            background-color: var(--purple-2);
+            padding: 20px 30px;
+        }
+
+        .block h2 {
+            color: white;
+        }
+
+            .impact {
+                font-size: 24px;
+                font-weight: bold;
+                color: var(--dark-purple);
+                margin-top: 10px;
+            }
+        
+        .block.special {
+            cursor: pointer;
+        }
+
+        .block.special:hover {
+            background-color: var(--purple-3);
+            transition: 0.3s ease-in-out;
+        }
+        
+            .block.special .special-content {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .block.special i {
+                font-size: 30px;
+            }
+
+            .block.special h2 {
+                color: var(--dark-purple);
+                font-size: 22px;
+            }
+
+            .special-content a {
+                font-weight: bold;
+                color: rgb(66, 66, 66);
+                font-style: italic;
+            }
+
+            .special-content a:hover {
+                color: var(--dark-purple);
+            }
+        
+        /* CONTACT */
+        .contact-us .accordion-content{
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 10px;
+        }
+
+            .contact-item i {
+                font-size: 55px;
+                color: var(--dark-purple);
+                width: 75px;
+            }
+
+            .contact-item a {
+                color: white;
+                text-decoration: none;
+            }
+
+            .contact-item a:hover {
+                text-decoration: underline;
+                color: var(--dark-purple);
+            }
+
+            .contact-item .links {
+                display: flex;
+                flex-direction: column;
+            }
+        
+        /* FOOTER */
+        footer {
+            background-color: var(--purple-3);
+            padding: 30px 50px 10px 50px;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+            footer span {
+                font-weight: bold;
+                text-transform: uppercase;
+                font-size: 20px;
+            }
+        
+        /* TIPPY */
+        .tippy-arrow::before {
+            color: var(--green);
+        }
+
+        .tippy-box {
+            background-color: var(--green);
+        }
+
+        .tippy-content {
+            color: var(--dark-purple);
+            text-transform: none;
+            font-weight: normal;
+        }
+    </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // Toggle only this accordion
+                    if (isActive) {
+                        this.classList.remove('active');
+                        content.classList.remove('active');
+                    } else {
+                        this.classList.add('active');
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+    
+    <!-- End JS Scripts -->
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="left-header">
+                <img src="/images/ellucian_wordmark_purple.png" alt="Ellucian Logo">
+            </div>
+            <div class="right-header">
+                <ul>
+                    <li>
+                        Sadie Archibald & Julia Fang
+                    </li>
+                    <li>
+                        Software Engineer Interns
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <h1>
+            2025 Financial Aid Offer for Sadie and Julia
+        </h1>
+        <main>
+            <div class="left-content">
+                <div class="definition">
+                    <h2>What is an Award Letter?</h2>
+                    <p>
+                        An award letter is a document that outlines your estimated cost of attendance and details the financial aid you're eligible for.
+                    </p>
+                </div>
+                <section class="accordion-section">
+                    <div class="accordion-item">
+                        <div class="accordion-header active">
+                            <h2>Key Contributions <i class="fas fa-md fa-info-circle tippy-active" data-tippy-content="This summer, we created, updated, and refactored award letters"></i></h2>
+                        </div>
+                        <div class="accordion-content active">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td></td>
+                                        <th>Summer 2025</th>
+                                        <th>Total</th>
+                                    </tr>
+                                    <tr>
+                                        <th><h3>Direct Impact <i class="fas fa-md fa-info-circle tippy-active" data-tippy-content="This summer, we created, updated, and refactored award letters"></i></h3></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Students Reached</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header active">
+                            <h2>Skills learned</h2>
+                        </div>
+                        <div class="accordion-content active">
+                            hello
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2>Challenges</h2>
+                        </div>
+                        <div class="accordion-content">
+                            hello
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h2>Purpose and Impact</h2>
+                        </div>
+                        <div class="accordion-content">
+                            hello
+                        </div>
+                    </div>
+                    <div class="next-steps">
+                        <h2>Next Steps To End Off The Internship (4)</h2>
+                        
+                    </div>
+                </section>
+            </div>
+            <div class="right-content">
+                <div class="block">
+                    <h2>OUR IMPACT</h2>
+                    <div class="impact">
+                        <p>500,000 students reached</p>
+                        <p>85 award letters</p>
+                    </div>
+                </div>
+                <div class="block">
+                    <h2>Refactor Code</h2>
+                    <h2>Many Updates</h2>
+                    <h2>Applications Used</h2>
+                </div>
+                <div class="block special" onclick="window.open('https://www.ellucian.com/solutions/student-financial-success', '_blank')">
+                    <h2>Why Choose CampusLogic?</h2>
+                    <div class="special-content">
+                        <p>Known for our supportive and collaborative community, CampusLogic offers an inclusive learning environment for interns!</p>
+                        <i class="fa-solid fa-greater-than"></i>
+                    </div>
+                </div>
+                <div class="block special">
+                    <h2>Many Thanks To...</h2>
+                    <div class="special-content">
+                        <p>
+                            <a href="https://www.linkedin.com/in/brentvermilion/" target="_blank">Brent Vermillion</a> - our manager<br>
+                            <a href="https://www.linkedin.com/in/marco-antonio-arriaga-oliva/" target="_blank">Marco Arriaga</a> - our technical mentor with endless patience and wisdom<br>
+                            <a href="https://www.linkedin.com/in/huong-thien-do/" target="_blank">Amy Do</a> - our hiring buddy and big sister
+                        </p>
+                        <i class="fa-solid fa-greater-than"></i>
+                    </div>
+                </div>
+                <div class="contact-us">
+                    <div class="accordion-header active">
+                        <h2>Contact Us</h2>
+                    </div>
+                    <div class="accordion-content active">
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <div class="links">
+                                <a href="https://www.linkedin.com/in/julia-fang/" target="_blank">
+                                    linkedin.com/in/juliafang1/
+                                </a>
+                                <a href="https://www.linkedin.com/in/sadievparker/" target="_blank">
+                                    linkedin.com/in/sadievparker/
+                                </a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="links">
+                                <a href="mailto:fang.julia1@gmail.com" target="_blank">fang.julia1@gmail.com</a>
+                                <a href="mailto:sadiep18@gmail.com" target="_blank">sadiep18@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="links">
+                                <a href="tel:+1234567890" target="_blank">
+                                    +1 (857) 208-3175
+                                </a>
+                                <a href="tel:+14034042218" target="_blank">
+                                    +1 (403) 404-2218
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+    </div>
+    <footer>
+        <div class="container">
+            <p>
+                <span>Financial aid and scholarships</span><br>
+                2003 Edmund Halley Dr Suite 500, Reston, VA 20191<br>
+                © 2025 Sadie Archibal & Julia Fang. All rights reserved.
+            </p>
+        </div>
+            
+    </footer>
+    <script src="https://unpkg.com/%40popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
+    <script>
+        tippy('.left-content i', {
+            interactive: true,
+            allowHTML: true,
+        });
+    </script>
+</body>
+</html>
