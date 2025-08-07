@@ -281,6 +281,11 @@
                 font-size: 55px;
                 color: var(--dark-purple);
                 font-weight: bold;
+                transition: font-size 0.2s;
+            }
+
+            .block.impact p.impact-rate:hover {
+                font-size: 65px;
             }
         
         .block.special {
@@ -497,6 +502,10 @@
             }
 
             .block.impact p.impact-rate {
+                font-size: 45px;
+            }
+
+            .block.impact p.impact-rate:hover {
                 font-size: 45px;
             }
 
@@ -844,7 +853,7 @@
     <div class="home-page active-page">
         <header class="container">
             <div class="left-header">
-                <img src="/images/ellucian_wordmark_purple.png" alt="Ellucian Logo">
+                <img src="./images/ellucian_wordmark_purple.png" alt="Ellucian Logo">
             </div>
             <div class="right-header">
                 <ul>
@@ -1079,9 +1088,9 @@
                         <h2 class="example-button" onclick="togglePage('award-letter-page')">What is an example of an award letter?</h2>
                         <p>Click above to find out! <strong style="color: #424242;">You're also looking at one right now</strong>: this website is modeled after a financial aid award letter.</p>
                     </div>
-                    <h2>What is Jira?</h2>
+                    <h2>What is Jira? <i class="fas fa-md fa-info-circle tippy-active" data-tippy-content="Jira is the website that contains all our award letter tasks, called 'stories.'"></i></h2>
                     <img src="./images/Jira.png" alt="Jira" onclick="openDialog('./images/Jira.png')" style="cursor: pointer;">
-                    <h2>What is QA?</h2>
+                    <h2>What is QA? <i class="fas fa-md fa-info-circle tippy-active" data-tippy-content="QA or 'Campus Communicator' is the platform we use for testing our award letters. It generates award letters using fake data so we can test our code."></i></h2>
                     <img src="./images/CampusCommunicator.png" alt="Campus Communicator" onclick="openDialog('./images/CampusCommunicator.png')" style="cursor: pointer;">
                 </div>
                 <div class="block special" onclick="window.open('https://www.ellucian.com/solutions/student-financial-success', '_blank')">
@@ -1200,7 +1209,7 @@
     <script src="https://unpkg.com/tippy.js@6"></script>
 
     <script>
-        tippy('.left-content i', {
+        tippy('.left-content i, .block.sadie i', {
             interactive: true,
             allowHTML: true,
         });
