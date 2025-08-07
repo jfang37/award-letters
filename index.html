@@ -16,12 +16,16 @@
             --dark-purple: #7a00db;
             --blue-purple: #7100eb;
             --green: #eafdec;
+            --green-2: #aaf6b3;
+            --dark-gray: #545454;
         }
 
         body {
             background-color: var(--purple-1);
             font-family: 'Poppins', sans-serif;
             color: white;
+            overflow-x: hidden;
+            margin: 0;
         }
 
         .container {
@@ -36,7 +40,7 @@
             padding: 20px;
         }
 
-        h2 {
+        h2, h3, ol {
             margin: 0px;
         }
 
@@ -44,29 +48,54 @@
             margin: 0px;
         }
 
+        a {
+            color: var(--dark-purple);
+        }
+
+        a:hover {
+            color: #424242;
+        }
+
+        .mobile {
+            display: none;
+        }
+
         /* HEADER */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0px 30px;
-            color: var(--dark-purple)
+            padding: 20px 30px;
+            color: var(--dark-purple);
         }
 
             .right-header ul {
                 list-style: none;
                 text-align: right;
+                margin: 0;
+                padding: 0;
+                font-size: 20px;
+            }
+
+            .right-header a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .right-header a:hover {
+                text-decoration: underline;
+                color: var(--dark-gray);
             }
 
             header img {
-                height: 50px;
+                height: 60px;
             }
         
         /* MAIN */
         main {
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            column-gap: 30px;
+            grid-template-columns: 3fr 1fr;
+            column-gap: 50px;
             padding: 0px 30px;
         }
 
@@ -79,12 +108,12 @@
             margin-top: 30px;
             display: flex;
             flex-direction: column;
-            row-gap: 10px;
+            row-gap: 30px;
         }
 
         .accordion-header {
             background-color: var(--blue-purple);
-            padding: 10px;
+            padding: 10px 20px;
             cursor: pointer;
             text-transform: uppercase;
             display: flex;
@@ -116,10 +145,18 @@
 
         .accordion-content.active {
             max-height: 500px;
-            padding: 20px;
+            padding: 10px 20px 20px 20px;
+        }
+
+        .accordion-content h3 {
+            margin-top: 10px;
         }
 
         /* TABLES */
+        .table-container {
+            padding: 0px 20px;
+        }
+
         table {
             width: 100%;
             text-align: left;
@@ -132,6 +169,24 @@
         table i {
             color: var(--dark-purple)
         }
+
+            table tr td:last-child,
+            table tr th:nth-child(2) {
+                text-align: center;
+            }
+
+            table tr td:first-child {
+                padding-left: 20px;
+            }
+
+            .highlight {
+                color: var(--dark-purple);
+                font-weight: bold;
+            }
+
+            td .highlight {
+                font-size: 24px;
+            }
 
         /* Next Steps */
         .next-steps h2 {
@@ -183,11 +238,49 @@
             color: white;
         }
 
-            .impact {
+        .block.sadie h2:not(:first-child) {
+            margin-top: 20px;
+        }
+
+        .block img {
+            width: 100%;
+        }
+
+        .block .example-button {
+            text-decoration: underline;
+            cursor: pointer;
+            color: var(--blue-purple);
+        }
+
+            .students-reached {
                 font-size: 24px;
                 font-weight: bold;
-                color: var(--dark-purple);
+                color: white;
+                background-color: var(--blue-purple);
                 margin-top: 10px;
+                text-align: center;
+                padding: 10px;
+            }
+        
+        .block.impact {
+            background-color: var(--green-2);
+            border: 5px solid var(--blue-purple);
+            cursor: pointer;
+        }
+
+            .block.impact h2 {
+                color: var(--blue-purple);
+            }
+
+            .block.impact p {
+                color: var(--dark-gray);
+            }
+
+            .block.impact p.impact-rate {
+                text-align: center;
+                font-size: 55px;
+                color: var(--dark-purple);
+                font-weight: bold;
             }
         
         .block.special {
@@ -270,7 +363,61 @@
                 text-transform: uppercase;
                 font-size: 20px;
             }
+
+        /* PHOTO GALLERY */
+        button.back {
+            background-color: var(--dark-purple);
+            border: none;
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .photo-page button::before {
+            content: "\f104";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 1000;
+            margin-right: 10px;
+        }
+
+        .photo-page main {
+            margin: 30px 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            row-gap: 20px;
+        }
+
+            .photo-page img {
+                width: 100%;
+                border-radius: 10px;
+                row-gap: 20px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .photo-page p {
+                text-align: center;
+                padding: 10px;
+                color: var(--dark-purple);
+                background-color: var(--purple-2);
+                border-radius: 10px;
+                font-weight: bold;
+            }
         
+        /* AWARD LETTER EXAMPLE PAGE */
+        .award-letter-page.container {
+            margin-top: 10px;
+        }
+
+        .award-letter-page img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+
         /* TIPPY */
         .tippy-arrow::before {
             color: var(--green);
@@ -285,9 +432,333 @@
             text-transform: none;
             font-weight: normal;
         }
+
+        /* ACTIVE PAGE */
+        .hidden {
+            display: none;
+        }
+
+        /* DIALOG/MODAL */
+        .dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .dialog-content {
+            background-color: white;
+            border-radius: 10px;
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .dialog-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .dialog-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark-gray);
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .dialog-close:hover {
+            color: var(--dark-purple);
+        }
+
+        @media (max-width: 575px) {
+            .container {
+                padding: 15px;
+            }
+
+            .desktop {
+                display: none;
+            }
+
+            .mobile {
+                display: block;
+            }
+
+            .block.impact p.impact-rate {
+                font-size: 45px;
+            }
+
+            h1 {
+                font-size: 18px;
+                padding: 10px;
+                margin-top: 0px;
+            }
+
+            h2, .students-reached p,
+            footer span, .block.special h2 {
+                font-size: 16px;
+            }
+
+            h3, p, li, .next-steps button,
+            .contact-item a, th {
+                font-size: 14px;
+            }
+
+            table td, header ul li,
+            footer p, .photo-page p,
+            button.back {
+                font-size: 12px;
+            }
+
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            main.container {
+                padding: 0px 15px;
+            }
+
+            header .left-header {
+                width: 30%;
+            }
+
+            header img {
+                width: 100%;
+                height: auto;
+            }
+            
+            .impact {
+                padding: 10px 15px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            .definition {
+                margin-top: 20px;
+            }
+
+            .accordion-header.active {
+                padding: 7px 10px;
+            }
+
+            .accordion-content.active {
+                padding: 0px 15px 10px 15px;
+            }
+
+            .table-container {
+                padding: 0px;
+            }
+
+            table tr td:first-child {
+                padding-left: 10px;
+            }
+
+            ol {
+                padding-left: 20px;
+            }
+
+            .next-steps h2 {
+                margin: 0px;
+            }
+
+            .next-steps .buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .next-steps button {
+                padding: 20px 30px;
+            }
+
+            .right-content {
+                margin-top: 20px;
+            }
+
+            .block {
+                padding: 10px 15px
+            }
+
+            .block.sadie h2:not(:first-child) {
+                margin: 0px;
+            }
+
+            .contact-item i {
+                font-size: 45px;
+                width: 50px;
+            }
+
+            .contact-item:first-child {
+                margin-top: 10px;
+            }
+
+            footer {
+                padding:0px;
+            }
+
+            /* PHOTO GALLERY */
+            .photo-page .container {
+                padding: 0px 15px;
+            }
+
+            .photo-page main {
+                grid-template-columns: repeat(2, 1fr);
+                margin: 15px 0px;
+                padding: 0px;
+                gap: 10px;
+            }
+
+            .photo-page p {
+                padding: 5px;
+            }
+            
+            /* AWARD LETTER EXAMPLE PAGE */
+            .container.award-letter-page {
+                padding: 10px;
+            }
+
+            .award-letter-page .award-letter-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .award-letter-page img {
+                width: 175%;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 991px) {
+            h1 {
+                padding: 10px;
+                font-size: 22px;
+            }
+
+            h2, h3, .block.special h2 {
+                font-size: 16px;
+            }
+
+            .next-steps button, p, ol li, td,
+            .contact-us a {
+                font-size: 14px;
+            }
+
+            main {
+                column-gap: 15px;
+            }
+
+            main.container {
+                padding: 0px 15px;
+                grid-template-columns: 3fr 1fr;
+            }
+
+            .table-container {
+                padding: 0px;
+            }
+
+            .next-steps button {
+                padding: 20px 40px;
+            }
+
+            .next-steps h2 {
+                margin: 0px;
+            }
+
+            .block {
+                padding: 15px 20px;
+            }
+
+            .contact-item i {
+                font-size: 40px;
+                width: 40px;
+            }
+
+            .photo-page main {
+                grid-template-columns: repeat(2, 1fr);
+                margin: 20px 0px;
+                padding: 0px;
+                gap: 15px;
+            }
+
+            .photo-page .container {
+                padding: 0px 15px;
+            }
+        }
     </style>
     
     <script>
+        const togglePage = (page) => {
+            const activePage = document.querySelector('.active-page');
+            const targetPage = document.querySelector(`.${page}`);
+            if (activePage) {
+                activePage.classList.remove('active-page');
+                activePage.classList.add('hidden');
+            }
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+                targetPage.classList.add('active-page');
+            }
+            window.scrollTo(0, 0);
+        };
+
+        const openDialog = (imageSrc) => {
+            // Create dialog overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'dialog-overlay';
+            overlay.id = 'imageDialog';
+            
+            // Create dialog content
+            const content = document.createElement('div');
+            content.className = 'dialog-content';
+            
+            // Create close button
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'dialog-close';
+            closeBtn.innerHTML = '&times;';
+            closeBtn.onclick = closeDialog;
+            
+            // Create image
+            const img = document.createElement('img');
+            img.src = imageSrc;
+            img.alt = 'Impact Image';
+            
+            // Assemble dialog
+            content.appendChild(closeBtn);
+            content.appendChild(img);
+            overlay.appendChild(content);
+            document.body.appendChild(overlay);
+            
+            // Close on overlay click
+            overlay.onclick = (e) => {
+                if (e.target === overlay) closeDialog();
+            };
+            
+            // Close on escape key
+            document.addEventListener('keydown', handleEscapeKey);
+        };
+
+        const closeDialog = () => {
+            const dialog = document.getElementById('imageDialog');
+            if (dialog) {
+                dialog.remove();
+                document.removeEventListener('keydown', handleEscapeKey);
+            }
+        };
+
+        const handleEscapeKey = (e) => {
+            if (e.key === 'Escape') closeDialog();
+        };
+
         document.addEventListener('DOMContentLoaded', function() {
             const accordionHeaders = document.querySelectorAll('.accordion-header');
             
@@ -306,6 +777,59 @@
                     }
                 });
             });
+
+            // Animate counting numbers
+            function animateNumber(element) {
+                const text = element.textContent;
+                const hasPlus = text.includes('+');
+                const cleanText = text.replace(/[,+]/g, '');
+                const targetNumber = parseInt(cleanText);
+                
+                if (isNaN(targetNumber)) return;
+                
+                const duration = 2000; // 2 seconds
+                const startTime = performance.now();
+                
+                function updateNumber(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Use easeOutCubic for smooth deceleration
+                    const easeProgress = 1 - Math.pow(1 - progress, 3);
+                    const currentNumber = Math.floor(easeProgress * targetNumber);
+                    
+                    // Format the number with commas if original had them
+                    let displayNumber = currentNumber.toLocaleString();
+                    if (hasPlus && progress === 1) {
+                        displayNumber += '+';
+                    }
+                    
+                    element.textContent = displayNumber;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateNumber);
+                    } else {
+                        element.textContent = text; // Restore original text
+                    }
+                }
+                
+                requestAnimationFrame(updateNumber);
+            }
+
+            // Start animations when elements come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateNumber(entry.target);
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            // Observe all highlight elements and students-reached elements
+            document.querySelectorAll('.highlight, .students-reached p').forEach(el => {
+                observer.observe(el);
+            });
         });
     </script>
     
@@ -317,15 +841,21 @@
 </head>
 
 <body>
-    <div class="container">
-        <header>
+    <div class="home-page active-page">
+        <header class="container">
             <div class="left-header">
                 <img src="/images/ellucian_wordmark_purple.png" alt="Ellucian Logo">
             </div>
             <div class="right-header">
                 <ul>
                     <li>
-                        Sadie Archibald & Julia Fang
+                        <a href="https://www.linkedin.com/in/sadievparker/" target="_blank">
+                            Sadie Archibald
+                        </a>
+                         & 
+                        <a href="https://www.linkedin.com/in/julia-fang/" target="_blank">
+                            Julia Fang
+                        </a>
                     </li>
                     <li>
                         Software Engineer Interns
@@ -336,8 +866,25 @@
         <h1>
             2025 Financial Aid Offer for Sadie and Julia
         </h1>
-        <main>
+        <main class="container">
+            <div class="block mobile">
+                    <h2>Students Reached</h2>
+                    <div class="students-reached">
+                        <p>500,000</p>
+                    </div>
+                </div>
+                <div class="block impact mobile" onclick="openDialog('./images/Impact.png')">
+                    <h2>IMPACT</h2>
+                    <p><u><strong>Increased</strong></u> Award Letter shipment rate by</p>
+                    <p class="impact-rate"><span class="highlight">43</span>%</p>
+                    <p style="text-align: center;"><em>Click me!</em></p>
+                </div>
+                <div class="block mobile">
+                    <h2 class="example-button" onclick="togglePage('award-letter-page')">What is an example of an award letter?</h2>
+                    <p>Click above to find out! <strong style="color: #424242;">You're also looking at one right now</strong>: this website is modeled after a financial aid award letter.</p>
+                </div>
             <div class="left-content">
+                <p class="desktop" style="color: var(--purple-3); font-style: italic;">*Julia and Sadie's 2025 Ellucian Internship Conclusion Presentation</p>
                 <div class="definition">
                     <h2>What is an Award Letter?</h2>
                     <p>
@@ -347,75 +894,200 @@
                 <section class="accordion-section">
                     <div class="accordion-item">
                         <div class="accordion-header active">
-                            <h2>Key Contributions <i class="fas fa-md fa-info-circle tippy-active" data-tippy-content="This summer, we created, updated, and refactored award letters"></i></h2>
+                            <h2>Making Award Letters <i class="fas fa-md fa-info-circle tippy-active" data-tippy-content="This summer, we created, updated, and refactored award letters"></i></h2>
                         </div>
                         <div class="accordion-content active">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <td></td>
-                                        <th>Summer 2025</th>
-                                        <th>Total</th>
-                                    </tr>
-                                    <tr>
-                                        <th><h3>Direct Impact <i class="fas fa-md fa-info-circle tippy-active" data-tippy-content="This summer, we created, updated, and refactored award letters"></i></h3></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Students Reached</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <h3>Purpose</h3>
+                            <p>
+                                Bring student financial aid success to higher education institutions nationally.
+                            </p>
+                            <h3>Process</h3>
+                            <ol>
+                                <li>Look at the award letter requirements</li>
+                                <li>Load the award letter locally</li>
+                                <li>Refactor outdated functions</li>
+                                <li>Implement the story requirements</li>
+                                <li>Test on Campus Communicator (QA)</li>
+                            </ol>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <div class="accordion-header active">
-                            <h2>Skills learned</h2>
+                            <h2>Skills learned <i class="fas fa-md fa-info-circle tippy-active" data-tippy-content="Sadie had previous C# experience while Julia had previous HTML/CSS experience. Both of us learned had to pick up new skills quickly, and that came with its own challenges."></i></h2>
                         </div>
                         <div class="accordion-content active">
-                            hello
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th><h3>Programming Languages <i class="fas fa-md fa-info-circle tippy-active" data-tippy-content="We used HTML/CSS and C# to create the award letters. Many of us did our own learning outside of work to sharpen our technical skills."></i></h3></th>
+                                            <th>Summer 2025</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>HTML</td>
+                                            <td>Web Page Structure</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CSS</td>
+                                            <td>Styled UI</td>
+                                        </tr>
+                                        <tr>
+                                            <td>C#</td>
+                                            <td>Logic</td>
+                                        </tr>
+                                    </tbody>
+                                    <thead>
+                                        <tr>
+                                            <th><h3>Tools <i class="fas fa-md fa-info-circle tippy-active" data-tippy-content="Along with programming languages, we had to adapt to a new coding and working environment."></i></h3></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Quality Assurance using Campus Communicator</td>
+                                            <td>Tested Features</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jira</td>
+                                            <td>Tracked Stories</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Azure DevOps</td>
+                                            <td>Managed Code</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2>Challenges</h2>
+                        <div class="accordion-header active">
+                            <h2>Key Contributions <i class="fas fa-md fa-info-circle tippy-active" data-tippy-content="Through communication with the product team and meticulous testing and learning, we made significant improvements to old award letter templates and processes."></i></h2>
                         </div>
-                        <div class="accordion-content">
-                            hello
+                        <div class="accordion-content active">
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th><h3>Direct Impact <i class="fas fa-md fa-info-circle tippy-active" data-tippy-content="We were able to increase award letter shipment rate by 43% as well as reach half a million students with our templates."></i></h3></th>
+                                            <th>Summer 2025</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Number of Institutions</td>
+                                            <td><span class="highlight">70</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Award Letters Completed</td>
+                                            <td><span class="highlight">85</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Time Spent</td>
+                                            <td><span class="highlight">960 hrs</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lines of Code Updated</td>
+                                            <td><span class="highlight">30,000+</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total Students Reached</td>
+                                            <td><span class="highlight">500,000</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <div class="accordion-header">
-                            <h2>Purpose and Impact</h2>
+                        <div class="accordion-header active">
+                            <h2>Challenges <i class="fas fa-md fa-info-circle tippy-active" data-tippy-content="Throughout the internship, we immersed ourselves in a completely new project. We had to learn and adapt to new languages, frameworks, and practices. These posed unique challenges that we learned to overcome."></i></h2>
                         </div>
-                        <div class="accordion-content">
-                            hello
+                        <div class="accordion-content active">
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th><h3>Refactoring <i class="fas fa-md fa-info-circle tippy-active" data-tippy-content="Somtimes we make updates to old templates, and those templates have code that’s really inefficient. Learning how to refactor that old code required a lot adaptability, fast learning, and slacking or meeting with our technical mentor."></i></h3></th>
+                                            <th>Summer 2025</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Custom Term Mapping</td>
+                                            <td>Less repeated code and more efficient</td>
+                                        </tr>
+                                        <tr>
+                                            <td>New Functions</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Accessibility</td>
+                                            <td>up to <a href="https://www.wcag.com/resource/what-is-wcag/" target="_blank">WCAG 2.2 AA</a> standards</td>
+                                        </tr>
+                                    </tbody>
+                                    <thead>
+                                        <tr>
+                                            <th><h3>Flagged Stories <i class="fas fa-md fa-info-circle tippy-active" data-tippy-content="Sometimes our templates got flagged for typos, logic errors, and more. Making sure our templates don't have to go through many rounds of reviews all over again was a challenge that we overcame with thorough testing communication with the product team."></i></h3></th>
+                                            <td>Always double, triple check!</td>
+                                        </tr>
+                                        <tr>
+                                            <th><h3><span style="color: var(--dark-purple)">Key Learnings</span></h3></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Be slow and meticulous</td>
+                                            <td>Test, test, test!</td>
+                                        </tr>
+                                        <tr>
+                                            <td><u>Communicate</u> with product team</td>
+                                            <td>Ask questions</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="next-steps">
                         <h2>Next Steps To End Off The Internship (4)</h2>
-                        
+                        <div class="buttons">
+                            <button onclick="window.open('https://www.ellucian.com/news/new-ellucian-student-financial-success-innovations-further-streamline-higher-educations', '_blank')">Explore Our Team's Products</button>
+                            <button onclick="window.open('https://www.ellucian.com/news/ellucians-internship-program-ranked-1-technology-and-software-engineering-ellucians-overall', '_blank')">Explore the Internship Program</button>
+                            <button onclick="togglePage('award-letter-page')">See An Award Letter Example</button>
+                            <button onclick="togglePage('photo-page')">View Our Photo Gallery</button>
+                        </div>
                     </div>
                 </section>
             </div>
             <div class="right-content">
-                <div class="block">
-                    <h2>OUR IMPACT</h2>
-                    <div class="impact">
-                        <p>500,000 students reached</p>
-                        <p>85 award letters</p>
+                <div class="block desktop">
+                    <h2>Students Reached</h2>
+                    <div class="students-reached">
+                        <p>500,000</p>
                     </div>
                 </div>
-                <div class="block">
-                    <h2>Refactor Code</h2>
-                    <h2>Many Updates</h2>
-                    <h2>Applications Used</h2>
+                <div class="block impact desktop" onclick="openDialog('./images/Impact.png')">
+                    <h2>IMPACT</h2>
+                    <p><u><strong>Increased</strong></u> Award Letter shipment rate by</p>
+                    <p class="impact-rate"><span class="highlight">43</span>%</p>
+                    <p style="text-align: center;"><em>Click me!</em></p>
+                </div>
+                <div class="block sadie">
+                    <div class="desktop">
+                        <h2 class="example-button" onclick="togglePage('award-letter-page')">What is an example of an award letter?</h2>
+                        <p>Click above to find out! <strong style="color: #424242;">You're also looking at one right now</strong>: this website is modeled after a financial aid award letter.</p>
+                    </div>
+                    <h2>What is Jira?</h2>
+                    <img src="./images/Jira.png" alt="Jira" onclick="openDialog('./images/Jira.png')" style="cursor: pointer;">
+                    <h2>What is QA?</h2>
+                    <img src="./images/CampusCommunicator.png" alt="Campus Communicator" onclick="openDialog('./images/CampusCommunicator.png')" style="cursor: pointer;">
                 </div>
                 <div class="block special" onclick="window.open('https://www.ellucian.com/solutions/student-financial-success', '_blank')">
                     <h2>Why Choose CampusLogic?</h2>
                     <div class="special-content">
-                        <p>Known for our supportive and collaborative community, CampusLogic offers an inclusive learning environment for interns!</p>
+                        <p>Through working with CampusLogic, we learned to be meticulous frontend developers and testers.</p>
                         <i class="fa-solid fa-greater-than"></i>
                     </div>
                 </div>
@@ -423,9 +1095,9 @@
                     <h2>Many Thanks To...</h2>
                     <div class="special-content">
                         <p>
-                            <a href="https://www.linkedin.com/in/brentvermilion/" target="_blank">Brent Vermillion</a> - our manager<br>
+                            <a href="https://www.linkedin.com/in/brentvermilion/" target="_blank">Brent Vermilion</a> - our manager<br>
                             <a href="https://www.linkedin.com/in/marco-antonio-arriaga-oliva/" target="_blank">Marco Arriaga</a> - our technical mentor with endless patience and wisdom<br>
-                            <a href="https://www.linkedin.com/in/huong-thien-do/" target="_blank">Amy Do</a> - our hiring buddy and big sister
+                            <a href="https://www.linkedin.com/in/huong-thien-do/" target="_blank">Amy Do</a> - our hiring buddy and good friend
                         </p>
                         <i class="fa-solid fa-greater-than"></i>
                     </div>
@@ -439,10 +1111,10 @@
                             <i class="fab fa-linkedin"></i>
                             <div class="links">
                                 <a href="https://www.linkedin.com/in/julia-fang/" target="_blank">
-                                    linkedin.com/in/juliafang1/
+                                    @juliafang1
                                 </a>
                                 <a href="https://www.linkedin.com/in/sadievparker/" target="_blank">
-                                    linkedin.com/in/sadievparker/
+                                    @sadievparker
                                 </a>
                             </div>
                         </div>
@@ -468,17 +1140,61 @@
                 </div>
             </div>
         </main>
-        
+    </div>
+    <div class="photo-page hidden">
+        <h1>Photo Gallery</h1>
+        <div class="container">
+            <button class="back" onclick="togglePage('home-page')">Back</button>
+            <main>
+                <div class="photo-item">
+                    <img src="./images/Ice_Skating.JPG" alt="Ice Skating">
+                    <p>Ice Skating</p>
+                </div>
+                <div class="photo-item">
+                    <img src="./images/Pickleball.JPG" alt="Pickleball">
+                    <p>Pickleball</p>
+                </div>
+                <div class="photo-item">
+                    <img src="./images/Pizookie.jpg" alt="Pizookie">
+                    <p>Pizookie Time</p>
+                </div>
+                <div class="photo-item">
+                    <img src="./images/Rock _Climbing.jpg" alt="Rock Climbing">
+                    <p>Rock Climbing Adventure</p>
+                </div>
+                <div class="photo-item">
+                    <img src="./images/Korean_Fried_Chicken.jpg" alt="Korean Fried Chicken">
+                    <p>Korean Fried Chicken</p>
+                </div>
+                <div class="photo-item">
+                    <img src="./images/DC_Trip.jpg" alt="DC Trip">
+                    <p>Award Letter Team DC Trip</p>
+                </div>
+                <div class="photo-item">
+                    <img src="./images/Reston_Kabob.jpg" alt="Reston Kabob">
+                    <p>Lunch With Backend Devs and Business Intern</p>
+                </div>
+                <div class="photo-item">
+                    <img src="./images/BJs.jpg" alt="BJ's">
+                    <p>Lunch at BJ's</p>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div class="container award-letter-page hidden">
+        <button class="back" onclick="togglePage('home-page')">Back</button>
+        <div class="award-letter-container">
+            <img src="./images/AwardLetter_Example.png" alt="Award Letter Example">
+        </div>
     </div>
     <footer>
         <div class="container">
             <p>
                 <span>Financial aid and scholarships</span><br>
                 2003 Edmund Halley Dr Suite 500, Reston, VA 20191<br>
-                © 2025 Sadie Archibal & Julia Fang. All rights reserved.
+                © 2025 Sadie Archibald & Julia Fang. All rights reserved.
             </p>
         </div>
-            
     </footer>
     <script src="https://unpkg.com/%40popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
