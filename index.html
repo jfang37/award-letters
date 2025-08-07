@@ -282,6 +282,16 @@
                 color: var(--dark-purple);
                 font-weight: bold;
                 transition: font-size 0.2s;
+                animation: glow 1s ease-in-out infinite alternate;
+            }
+
+            @keyframes glow {
+                from {
+                    text-shadow: 0 0 5px var(--purple-2);
+                }
+                to {
+                    text-shadow: 0 0 10px var(--purple-2), 0 0 30px var(--dark-purple), 0 0 40px var(--dark-purple);
+                }
             }
 
             .block.impact p.impact-rate:hover {
@@ -788,13 +798,24 @@
             });
 
             // Animate counting numbers
+            let animatingElements = new Set(); // Track which elements are currently animating
+            let hasInitiallyAnimated = new Set(); // Track which elements have done their initial animation
+            
             function animateNumber(element) {
+                // Prevent multiple animations on the same element
+                if (animatingElements.has(element)) return;
+                
+                animatingElements.add(element);
+                
                 const text = element.textContent;
                 const hasPlus = text.includes('+');
                 const cleanText = text.replace(/[,+]/g, '');
                 const targetNumber = parseInt(cleanText);
                 
-                if (isNaN(targetNumber)) return;
+                if (isNaN(targetNumber)) {
+                    animatingElements.delete(element);
+                    return;
+                }
                 
                 const duration = 2000; // 2 seconds
                 const startTime = performance.now();
@@ -819,18 +840,30 @@
                         requestAnimationFrame(updateNumber);
                     } else {
                         element.textContent = text; // Restore original text
+                        animatingElements.delete(element); // Remove from tracking set
                     }
                 }
                 
                 requestAnimationFrame(updateNumber);
             }
 
-            // Start animations when elements come into view
+            // Function to animate all number elements
+            function animateAllNumbers() {
+                document.querySelectorAll('.highlight, .students-reached p').forEach(el => {
+                    animateNumber(el);
+                });
+            }
+
+            // Run animation every minute (60000 milliseconds)
+            setInterval(animateAllNumbers, 60000);
+
+            // Intersection observer for initial animations only
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
+                    if (entry.isIntersecting && !hasInitiallyAnimated.has(entry.target)) {
                         animateNumber(entry.target);
-                        observer.unobserve(entry.target); // Only animate once
+                        hasInitiallyAnimated.add(entry.target); // Mark as initially animated
+                        observer.unobserve(entry.target); // Stop observing this element
                     }
                 });
             }, { threshold: 0.5 });
