@@ -294,8 +294,11 @@
                 }
             }
 
-            .block.impact p.impact-rate:hover {
-                font-size: 65px;
+            /* Only apply hover effect on devices that support hover (not touch devices) */
+            @media (hover: hover) {
+                .block.impact p.impact-rate:hover {
+                    font-size: 65px;
+                }
             }
         
         .block.special {
@@ -515,8 +518,11 @@
                 font-size: 45px;
             }
 
-            .block.impact p.impact-rate:hover {
-                font-size: 45px;
+            /* Disable hover effect on mobile/touch devices */
+            @media (hover: hover) {
+                .block.impact p.impact-rate:hover {
+                    font-size: 45px;
+                }
             }
 
             h1 {
