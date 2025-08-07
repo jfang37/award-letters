@@ -847,23 +847,29 @@
                 requestAnimationFrame(updateNumber);
             }
 
-            // Function to animate all number elements
-            function animateAllNumbers() {
-                document.querySelectorAll('.highlight, .students-reached p').forEach(el => {
+            // Function to animate only students reached and impact numbers
+            function animateRecurringNumbers() {
+                document.querySelectorAll('.students-reached p, .impact-rate .highlight').forEach(el => {
                     animateNumber(el);
                 });
             }
 
-            // Run animation every minute (60000 milliseconds)
-            setInterval(animateAllNumbers, 60000);
+            // Run recurring animations every minute (60000 milliseconds)
+            setInterval(animateRecurringNumbers, 60000);
 
-            // Intersection observer for initial animations only
+            // Intersection observer for initial animations and one-time key contributions
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !hasInitiallyAnimated.has(entry.target)) {
                         animateNumber(entry.target);
                         hasInitiallyAnimated.add(entry.target); // Mark as initially animated
-                        observer.unobserve(entry.target); // Stop observing this element
+                        
+                        // Only unobserve key contributions elements (they should animate only once)
+                        const isKeyContribution = entry.target.closest('table') && 
+                                                entry.target.classList.contains('highlight');
+                        if (isKeyContribution) {
+                            observer.unobserve(entry.target); // Stop observing key contributions
+                        }
                     }
                 });
             }, { threshold: 0.5 });
