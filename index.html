@@ -78,13 +78,7 @@
             }
 
             .right-header a {
-                text-decoration: none;
-                color: inherit;
-            }
-
-            .right-header a:hover {
                 text-decoration: underline;
-                color: var(--dark-gray);
             }
 
             header img {
@@ -574,7 +568,7 @@
                 margin-top: 20px;
             }
 
-            .accordion-header.active {
+            .accordion-header {
                 padding: 7px 10px;
             }
 
@@ -857,29 +851,13 @@
                 requestAnimationFrame(updateNumber);
             }
 
-            // Function to animate only students reached and impact numbers
-            function animateRecurringNumbers() {
-                document.querySelectorAll('.students-reached p, .impact-rate .highlight').forEach(el => {
-                    animateNumber(el);
-                });
-            }
-
-            // Run recurring animations every minute (60000 milliseconds)
-            setInterval(animateRecurringNumbers, 60000);
-
-            // Intersection observer for initial animations and one-time key contributions
+            // Intersection observer for scroll-based animations
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !hasInitiallyAnimated.has(entry.target)) {
                         animateNumber(entry.target);
                         hasInitiallyAnimated.add(entry.target); // Mark as initially animated
-                        
-                        // Only unobserve key contributions elements (they should animate only once)
-                        const isKeyContribution = entry.target.closest('table') && 
-                                                entry.target.classList.contains('highlight');
-                        if (isKeyContribution) {
-                            observer.unobserve(entry.target); // Stop observing key contributions
-                        }
+                        observer.unobserve(entry.target); // Stop observing after first animation
                     }
                 });
             }, { threshold: 0.5 });
@@ -907,13 +885,9 @@
             <div class="right-header">
                 <ul>
                     <li>
-                        <a href="https://www.linkedin.com/in/sadievparker/" target="_blank">
-                            Sadie Archibald
-                        </a>
+                        <a href="https://www.linkedin.com/in/sadievparker/" target="_blank">Sadie Archibald</a>
                          & 
-                        <a href="https://www.linkedin.com/in/julia-fang/" target="_blank">
-                            Julia Fang
-                        </a>
+                        <a href="https://www.linkedin.com/in/julia-fang/" target="_blank">Julia Fang</a>
                     </li>
                     <li>
                         Software Engineer Interns
